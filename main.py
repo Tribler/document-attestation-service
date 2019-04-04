@@ -56,7 +56,7 @@ Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
 Handler.extensions_map.update({
     '.webapp': 'application/x-web-app-manifest+json',
 });
-os.chdir(os.path.join(os.path.dirname(__file__), '..','frontend', "dist"))
+os.chdir(os.path.join(os.path.dirname(__file__),'frontend', "dist"))
 
 httpd = SocketServer.TCPServer(("", PORT), Handler)
 print "Serving at port", PORT
