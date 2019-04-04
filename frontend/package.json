@@ -15,6 +15,7 @@
 		"serve": "npm run build && http-server ./dist -g"
 	},
 	"dependencies": {
+		"gweld": "^1.0.0-beta.1",
 		"preact": "^8.3.1",
 		"preact-async-route": "^2.2.0",
 		"preact-router": "^2.6.1"
