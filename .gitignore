@@ -102,3 +102,10 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Editor specific
+.vscode
+
+# Frontend
+/frontend/node_modules/
+/frontend/package-lock.json

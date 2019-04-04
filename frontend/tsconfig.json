@@ -1,0 +1,21 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "ES5",
+    "skipLibCheck": true,
+    "lib": ["dom", "esnext", "webworker"],
+    "moduleResolution": "node",
+    "removeComments": true,
+    "inlineSourceMap": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "esModuleInterop": true,
+    "module": "esnext"
+  },
+  "exclude": ["node_modules"]
+}

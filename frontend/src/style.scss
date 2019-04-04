@@ -1,0 +1,30 @@
+body {
+  height: 100%;
+  width: 100%;
+
+  padding: 0;
+  margin: 0;
+
+  background-color: #f2f2f2;
+  color: #020e1b;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  width: 60vw;
+  margin: 3vh auto 0 auto;
+  padding: 1vh 2vw;
+
+  background-color: #fff;
+}
+
+h1 {
+  color: #07386e;
+}
+
+h2 {
+  color: #03254b;
+}
