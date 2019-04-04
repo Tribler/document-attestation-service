@@ -14,7 +14,7 @@ export default class Loading extends Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <h1>Loading..</h1>
+        <h2>Loading..</h2>
         <p>Please wait for the page to load.</p>
       </div>
     );

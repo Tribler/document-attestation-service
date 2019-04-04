@@ -14,7 +14,7 @@ export default class LoadingFailed extends Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <h1>Oh no!</h1>
+        <h2>Oh no!</h2>
         <p>
           The page failed to load! Please check you connection and try again.
         </p>

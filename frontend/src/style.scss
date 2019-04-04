@@ -19,12 +19,24 @@ main {
   padding: 1vh 2vw;
 
   background-color: #fff;
+
+  h1 {
+    color: #07386e;
+    font-size: 220%;
+  }
+
+  h2 {
+    color: #03254b;
+    font-size: 180%;
+  }
 }
 
-h1 {
-  color: #07386e;
-}
+nav {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #035369;
 
-h2 {
-  color: #03254b;
+  a {
+    color: #fff;
+  }
 }

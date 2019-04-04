@@ -16,7 +16,7 @@ export default class Peers extends Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <h1>Peers</h1>
+        <h2>Peers</h2>
         <p>This should show all your peers, but they are not here yet.</p>
       </div>
     );

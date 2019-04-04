@@ -14,7 +14,7 @@ export default class NotFound extends Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <h1>404</h1>
+        <h2>404</h2>
         <p>It looks like you're lost...</p>
       </div>
     );
