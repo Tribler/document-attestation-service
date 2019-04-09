@@ -3,6 +3,7 @@ import multiprocessing as mp
 
 import SocketServer
 import SimpleHTTPServer
+from SimpleHTTPServer import SimpleHTTPRequestHandler
 import atexit
 import os
 
@@ -44,15 +45,42 @@ for i in [1, 2]:
     # Start the IPv8 service
     ipv8 = IPv8(configuration)
     rest_manager = RESTManager(ipv8)
-    rest_manager.start(14410 + i)
 
+    rest_manager.start(14410 + i)
+    
+    def injectCORS(func):
+        def inner(request):
+            request.setHeader('Access-Control-Allow-Origin', '*')
+            return func(request)
+        return inner
+
+    def recursiveFinder(entities):
+        for i in entities:
+            if hasattr(i[1],"listEntries"):
+                for j in i[1].listEntities():
+                    recursiveFinder(j)
+
+
+            if hasattr(i[1], "render_GET"):
+                i[1].render_GET = injectCORS(i[1].render_GET)
+
+
+            if hasattr(i[1], "render_POST"):
+                i[1].render_POST = injectCORS(i[1].render_POST)
+
+    recursiveFinder(rest_manager.root_endpoint.listEntities())
+    
     # Print the peer for reference
     print "Starting peer", b64encode(ipv8.keys["anonymous id"].mid)
 
 
 
 
-Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
+class Handler(SimpleHTTPRequestHandler):
+    def send_response(self, *args, **kwargs):
+        SimpleHTTPRequestHandler.send_response(self, *args, **kwargs)
+        self.send_header('Access-Control-Allow-Origin', '*')
+
 Handler.extensions_map.update({
     '.webapp': 'application/x-web-app-manifest+json',
 });
