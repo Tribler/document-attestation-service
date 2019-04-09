@@ -14,20 +14,32 @@ main {
   flex-direction: column;
 
   height: 100%;
-  width: 60vw;
-  margin: 3vh auto 0 auto;
+  width: 90vw;
+  margin: 1vh auto 0 auto;
   padding: 1vh 2vw;
 
   background-color: #fff;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 
   h1 {
     color: #07386e;
-    font-size: 220%;
+    font-size: 1.5em;
   }
 
   h2 {
     color: #03254b;
-    font-size: 180%;
+    font-size: 1.4em;
+  }
+
+  h3 {
+    font-size: 0.9em;
+    font-weight: 200;
+    margin-top: 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 60vw;
+    margin-top: 3vh;
   }
 }
 
@@ -38,5 +50,40 @@ nav {
 
   a {
     color: #fff;
+  }
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  border-spacing: 0;
+
+  tr {
+    padding: 1vh 1vw;
+    height: 2em;
+
+    &.header {
+      color: #fff;
+      background-color: #057594;
+    }
+
+    &:nth-child(even) {
+      background-color: #83e1fb;
+    }
+
+    &:nth-child(even) {
+      background-color: #e6f9fe;
+    }
+  }
+
+  td {
+    padding: 0 0.8em;
+
+    &.empty {
+      font-style: italic;
+    }
   }
 }

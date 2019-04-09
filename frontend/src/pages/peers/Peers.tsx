@@ -23,10 +23,30 @@ export default class Peers extends Component<{}, IState> {
    */
   public render(): JSX.Element {
     return (
-      <div>
+      <section>
         <h2>Peers</h2>
-        <p>This should show all your peers, but they are not here yet.</p>
-      </div>
+        <h3>A list of all peers currently discovered by the used peer.</h3>
+        <table>
+          <tr class="header">
+            <th>Peer #</th>
+            <th>Peer ID</th>
+          </tr>
+          {this.state.peers.map((peer, index, arr) => (
+            <tr>
+              <td>
+                {index + 1}/{arr.length}
+              </td>
+              <td>{peer}</td>
+            </tr>
+          ))}
+          {this.state.peers.length === 0 && (
+            <tr>
+              <td class="empty">-</td>
+              <td class="empty">No entries</td>
+            </tr>
+          )}
+        </table>
+      </section>
     );
   }
 
@@ -37,6 +57,10 @@ export default class Peers extends Component<{}, IState> {
    */
   public componentWillMount() {
     this.timerId = setInterval(() => this.fetchPeers(), 500);
+
+    this.setState({
+      peers: [],
+    });
   }
 
   /**
