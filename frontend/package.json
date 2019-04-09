@@ -1,46 +1,46 @@
 {
-	"name": "document-attestation-service",
-	"version": "0.1.0",
-	"description": "Document Attestation Service",
-	"author": "The Tribler team",
-	"license": "LGPL-3.0",
-	"sideEffects": [
-		"*.scss"
-	],
-	"scripts": {
-		"start": "webpack-dev-server --mode development --config ./webpack/dev.config.js",
-		"test": "npm run lint",
-		"lint": "tslint -c ./tslint.json --fix \"src/**/*.ts?\" -t codeFrame",
-		"build": "webpack -p --config ./webpack/prod.config.js",
-		"serve": "npm run build && http-server ./dist -g"
-	},
-	"dependencies": {
-		"gweld": "^1.0.0-beta.1",
-		"preact": "^8.3.1",
-		"preact-async-route": "^2.2.0",
-		"preact-router": "^2.6.1"
-	},
-	"devDependencies": {
-		"awesome-typescript-loader": "^5.0.0",
-		"boilerpack": "^0.1.0",
-		"compression-webpack-plugin": "^2.0.0",
-		"css-loader": "^1.0.1",
-		"html-webpack-plugin": "^3.2.0",
-		"http-server": "^0.11.1",
-		"node-sass": "^4.9.0",
-		"sass-loader": "^7.0.3",
-		"style-loader": "^0.23.1",
-		"tslint": "^5.10.0",
-		"typescript": "^3.1.6",
-		"webpack": "^4.12.0",
-		"webpack-cli": "^3.0.3",
-		"webpack-dev-server": "^3.1.4"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Tribler/document-attestation-service.git"
-	},
-	"bugs": {
-		"url": "https://github.com/Tribler/document-attestation-service/issues"
-	}
+  "name": "document-attestation-service",
+  "version": "0.1.0",
+  "description": "Document Attestation Service",
+  "author": "The Tribler team",
+  "license": "LGPL-3.0",
+  "sideEffects": [
+    "*.scss"
+  ],
+  "scripts": {
+    "start": "webpack-dev-server --mode development --config ./webpack/dev.config.js",
+    "test": "npm run lint",
+    "lint": "tslint -c ./tslint.json --fix \"src/**/*.ts?\" -t codeFrame",
+    "build": "webpack -p --config ./webpack/prod.config.js",
+    "serve": "npm run build && http-server ./dist -g"
+  },
+  "dependencies": {
+    "gweld": "^1.0.0-beta.1",
+    "preact": "^8.3.1",
+    "preact-async-route": "^2.2.0",
+    "preact-router": "^2.6.1"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.0.0",
+    "boilerpack": "^0.1.0",
+    "compression-webpack-plugin": "^2.0.0",
+    "css-loader": "^1.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.11.1",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.23.1",
+    "tslint": "^5.10.0",
+    "typescript": "^3.1.6",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.3",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tribler/document-attestation-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tribler/document-attestation-service/issues"
+  }
 }

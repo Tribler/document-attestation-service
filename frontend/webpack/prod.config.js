@@ -10,7 +10,7 @@ module.exports = base
       filename: '[path].gz[query]',
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
-    })
+    }),
   )
   .addPlugin(
     new DefinePlugin({
@@ -18,6 +18,6 @@ module.exports = base
         NODE_ENV: JSON.stringify('production'),
       },
       DEBUG: false,
-    })
+    }),
   )
   .make();
