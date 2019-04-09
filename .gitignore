@@ -102,3 +102,21 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Editor specific
+.vscode
+
+# Frontend
+/frontend/node_modules/
+/frontend/package-lock.json
+
+
+# py-ipv8
+
+*.pem
+*.db
+*.db-*
+state_*/
+sqlite/
+
+pipfile.lock
