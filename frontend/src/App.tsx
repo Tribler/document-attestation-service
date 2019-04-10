@@ -27,6 +27,7 @@ export default class App extends Component<{}, {}> {
           <h1>Document Attestation</h1>
           <nav>
             <a href="/">Peers</a>
+            <a href="/attributes">Attributes</a>
           </nav>
         </header>
         <Router>
@@ -34,6 +35,11 @@ export default class App extends Component<{}, {}> {
             path="/"
             loading={() => <Loading />}
             getComponent={() => this.fetchPage('Peers')}
+          />
+          <AsyncRoute
+            path="/attributes"
+            loading={() => <Loading />}
+            getComponent={() => this.fetchPage('Attributes')}
           />
           <NotFound default />
         </Router>
