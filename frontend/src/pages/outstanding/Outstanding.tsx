@@ -4,11 +4,11 @@ import { Injector } from '../../controllers';
 import { PeerController } from '../../controllers/PeerController';
 
 /**
- * Peers page.
+ * Outstanding requests page.
  *
- * This lists all the pears the user is connected to.
+ * This lists all the outstanding requests the peer knows about.
  */
-export default class Peers extends Component<{}, IState> {
+export default class Outstanding extends Component<{}, IState> {
   /**
    * ID of the interval timer.
    */
@@ -24,25 +24,29 @@ export default class Peers extends Component<{}, IState> {
   public render(): JSX.Element {
     return (
       <section>
-        <h2>Peers</h2>
-        <h3>A list of all peers currently discovered by the used peer.</h3>
+        <h2>Outstanding requests</h2>
+        <h3>A list of all outstanding requests known by the peer.</h3>
         <table>
           <tr class="header">
-            <th>Peer #</th>
-            <th>Peer ID</th>
+            <th>#</th>
+            <th>Attribute Name</th>
+            <th>Requested By</th>
           </tr>
-          {this.state.peers.map((peer, index, arr) => (
+          {this.state.outstanding.map((outstanding, index, arr) => (
             <tr>
               <td>
                 {index + 1}/{arr.length}
               </td>
-              <td>{peer}</td>
+              <td>{outstanding[1]}</td>
+              <td>{outstanding[0]}</td>
             </tr>
           ))}
-          {this.state.peers.length === 0 && (
+          {this.state.outstanding.length === 0 && (
             <tr>
               <td class="empty">-</td>
-              <td class="empty">No entries</td>
+              <td class="empty">-</td>
+              <td class="empty">-</td>
+              <td class="empty">-</td>
             </tr>
           )}
         </table>
@@ -56,13 +60,13 @@ export default class Peers extends Component<{}, IState> {
    * Called by Preact.
    */
   public componentWillMount() {
-    this.timerId = setInterval(() => this.fetchPeers(), 500);
+    this.timerId = setInterval(() => this.fetchOutstanding(), 500);
 
     this.setState({
-      peers: [],
+      outstanding: [],
     });
 
-    this.fetchPeers();
+    this.fetchOutstanding();
   }
 
   /**
@@ -76,20 +80,20 @@ export default class Peers extends Component<{}, IState> {
   }
 
   /**
-   * Fetch the peers of this peer.
+   * Fetch the outstanding attributes.
    */
-  private async fetchPeers(): Promise<void> {
+  private async fetchOutstanding(): Promise<void> {
     const ctr = await Injector.get<PeerController>('PeerController');
-    const req = await fetch(`${ctr.currentPeer}/attestation?type=peers`);
+    const req = await fetch(`${ctr.currentPeer}/attestation?type=outstanding`);
     const json = await req.json();
 
-    this.setState({ peers: json });
+    this.setState({ outstanding: json });
   }
 }
 
 interface IState {
   /**
-   * A list of all peers.
+   * A list of all attributes.
    */
-  peers: string[];
+  outstanding: string[][];
 }

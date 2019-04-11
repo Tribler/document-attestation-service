@@ -16,7 +16,7 @@ main {
   height: 100%;
   width: 90vw;
   margin: 1vh auto 0 auto;
-  padding: 1vh 2vw;
+  padding: 1vh 2vw 3vh 2vw;
 
   background-color: #fff;
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
@@ -59,6 +59,8 @@ section {
 }
 
 table {
+  display: block;
+  overflow-x: auto;
   border-spacing: 0;
 
   tr {
