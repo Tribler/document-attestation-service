@@ -44,18 +44,40 @@ main {
 }
 
 nav {
+  font-size: 0.85em;
+  height: 2em;
   width: 100%;
-  padding: 10px 0;
+
   background-color: #035369;
 
   a {
-    color: #fff;
-  }
-}
+    display: inline-block;
+    padding: 0 1vw;
+    line-height: 2em;
 
-#dropdown {
-  float: right;
-  margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+
+    &.active {
+      text-decoration: underline;
+    }
+
+    &:hover {
+      background-color: #04627c;
+      text-decoration: underline;
+    }
+  }
+
+  #dropdown {
+    float: right;
+    height: 100%;
+    width: 10%;
+
+    background-color: #04627c;
+    color: #fff;
+    border: 0;
+    outline: 0;
+  }
 }
 
 section {
@@ -86,6 +108,7 @@ table {
     }
   }
 
+  th,
   td {
     padding: 0 0.8em;
 
