@@ -13,7 +13,7 @@ export default class Dropdown extends Component<{}, {}> {
     Injector.get<PeerController>('PeerController').then(ctr => {
       this.controller = ctr;
       this.forceUpdate();
-      this.fetchPeers(14411).catch(() => console.info('Discovered all nodes.'));
+      this.fetchPeers(14412).catch(() => console.info('Discovered all nodes.'));
     });
   }
 
