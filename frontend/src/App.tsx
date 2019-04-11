@@ -8,6 +8,7 @@ import LoadingFailed from './pages/loadingFailed/LoadingFailed';
 import NotFound from './pages/notFound/NotFound';
 
 import './style.scss';
+import Dropdown from './components/dropdown/Dropdown';
 
 /**
  * Main component of the application.
@@ -29,6 +30,7 @@ export default class App extends Component<{}, {}> {
             <a href="/">Peers</a>
             <a href="/attributes">Attributes</a>
             <a href="/outstanding">Outstanding</a>
+            <Dropdown />
           </nav>
         </header>
         <Router>

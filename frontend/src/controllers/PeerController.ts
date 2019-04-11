@@ -10,7 +10,7 @@ export class PeerController {
    * A list of all discovered peers.
    */
   @observable
-  public readonly peers: string[];
+  public peers: string[];
 
   /**
    * Create the controller.
@@ -25,6 +25,6 @@ export class PeerController {
    * @param peer The peer to add.
    */
   public add(peer: string) {
-    this.peers.push(peer);
+    this.peers = [...this.peers, peer];
   }
 }
