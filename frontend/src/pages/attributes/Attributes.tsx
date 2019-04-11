@@ -4,11 +4,11 @@ import { Injector } from '../../controllers';
 import { PeerController } from '../../controllers/PeerController';
 
 /**
- * Peers page.
+ * Attributes page.
  *
- * This lists all the pears the user is connected to.
+ * This lists all the attributes the peer knows about.
  */
-export default class Peers extends Component<{}, IState> {
+export default class Attributes extends Component<{}, IState> {
   /**
    * ID of the interval timer.
    */
@@ -24,25 +24,31 @@ export default class Peers extends Component<{}, IState> {
   public render(): JSX.Element {
     return (
       <section>
-        <h2>Peers</h2>
-        <h3>A list of all peers currently discovered by the used peer.</h3>
+        <h2>Attributes</h2>
+        <h3>A list of all attributes known by the peer.</h3>
         <table>
           <tr class="header">
-            <th>Peer #</th>
-            <th>Peer ID</th>
+            <th>#</th>
+            <th>Name</th>
+            <th>Attribute ID</th>
+            <th>Attested By</th>
           </tr>
-          {this.state.peers.map((peer, index, arr) => (
+          {this.state.attributes.map((attribute, index, arr) => (
             <tr>
               <td>
                 {index + 1}/{arr.length}
               </td>
-              <td>{peer}</td>
+              <td>{attribute[0]}</td>
+              <td>{attribute[1]}</td>
+              <td>{attribute[3]}</td>
             </tr>
           ))}
-          {this.state.peers.length === 0 && (
+          {this.state.attributes.length === 0 && (
             <tr>
               <td class="empty">-</td>
-              <td class="empty">No entries</td>
+              <td class="empty">-</td>
+              <td class="empty">-</td>
+              <td class="empty">-</td>
             </tr>
           )}
         </table>
@@ -56,13 +62,13 @@ export default class Peers extends Component<{}, IState> {
    * Called by Preact.
    */
   public componentWillMount() {
-    this.timerId = setInterval(() => this.fetchPeers(), 500);
+    this.timerId = setInterval(() => this.fetchAttributes(), 500);
 
     this.setState({
-      peers: [],
+      attributes: [],
     });
 
-    this.fetchPeers();
+    this.fetchAttributes();
   }
 
   /**
@@ -76,20 +82,20 @@ export default class Peers extends Component<{}, IState> {
   }
 
   /**
-   * Fetch the peers of this peer.
+   * Fetch the attributes.
    */
-  private async fetchPeers(): Promise<void> {
+  private async fetchAttributes(): Promise<void> {
     const ctr = await Injector.get<PeerController>('PeerController');
-    const req = await fetch(`${ctr.currentPeer}/attestation?type=peers`);
+    const req = await fetch(`${ctr.currentPeer}/attestation?type=attributes`);
     const json = await req.json();
 
-    this.setState({ peers: json });
+    this.setState({ attributes: json });
   }
 }
 
 interface IState {
   /**
-   * A list of all peers.
+   * A list of all attributes.
    */
-  peers: string[];
+  attributes: string[][];
 }
