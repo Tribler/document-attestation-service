@@ -39,6 +39,7 @@ export default class Dropdown extends Component<{}, {}> {
     return (
       this.controller && (
         <select
+          id="dropdown"
           onChange={peer =>
             (this.controller.currentPeer = (peer as any).target.value)
           }

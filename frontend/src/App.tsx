@@ -29,9 +29,7 @@ export default class App extends Component<{}, {}> {
           <nav>
             <a href="/">Peers</a>
             <a href="/attributes">Attributes</a>
-            <div style="float: right">
-              <Dropdown />
-            </div>
+            <Dropdown />
           </nav>
         </header>
         <Router>
