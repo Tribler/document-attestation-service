@@ -2,6 +2,7 @@ import { Component, h } from 'preact';
 
 import AsyncRoute from 'preact-async-route';
 import Router from 'preact-router';
+import { Link } from 'preact-router/match';
 
 import Loading from './pages/loading/Loading';
 import LoadingFailed from './pages/loadingFailed/LoadingFailed';
@@ -27,9 +28,15 @@ export default class App extends Component<{}, {}> {
         <header>
           <h1>Document Attestation</h1>
           <nav>
-            <a href="/">Peers</a>
-            <a href="/attributes">Attributes</a>
-            <a href="/outstanding">Outstanding</a>
+            <Link activeClassName="active" href="/">
+              Peers
+            </Link>
+            <Link activeClassName="active" href="/attributes">
+              Attributes
+            </Link>
+            <Link activeClassName="active" href="/outstanding">
+              Outstanding
+            </Link>
             <Dropdown />
           </nav>
         </header>

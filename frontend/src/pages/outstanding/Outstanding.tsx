@@ -46,7 +46,6 @@ export default class Outstanding extends Component<{}, IState> {
               <td class="empty">-</td>
               <td class="empty">-</td>
               <td class="empty">-</td>
-              <td class="empty">-</td>
             </tr>
           )}
         </table>
