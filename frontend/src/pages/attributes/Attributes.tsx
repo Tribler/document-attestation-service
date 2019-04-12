@@ -31,7 +31,7 @@ export default class Attributes extends Component<{}, IState> {
             <th>#</th>
             <th>Name</th>
             <th>Attribute ID</th>
-            <th>Attested By</th>
+            <th>Other party</th>
           </tr>
           {this.state.attributes.map((attribute, index, arr) => (
             <tr>
