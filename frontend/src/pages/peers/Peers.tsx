@@ -106,15 +106,13 @@ export default class Peers extends Component<{}, IState> {
    */
   private async requestAttestation(peer: string): Promise<void> {
     let name = prompt('What is the name of the attribute?');
-    if (name === null) return;
-    if (name === '') name = 'default';
 
     peer = encodeURIComponent(peer);
-    name = encodeURIComponent(name);
+    name = encodeURIComponent(name || 'default');
     const params = `type=request&mid=${peer}&attribute_name=${name}`;
 
     const ctr = await Injector.get<PeerController>('PeerController');
-    const req = await fetch(`${ctr.currentPeer}/attestation?${params}`, {
+    await fetch(`${ctr.currentPeer}/attestation?${params}`, {
       method: 'POST',
     });
   }
