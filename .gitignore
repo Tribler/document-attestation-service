@@ -119,4 +119,4 @@ venv.bak/
 state_*/
 sqlite/
 
-pipfile.lock
+*.lock

@@ -12,7 +12,7 @@
     "test": "npm run lint",
     "lint": "tslint -c ./tslint.json --fix \"src/**/*.ts?\" -t codeFrame",
     "build": "webpack -p --config ./webpack/prod.config.js",
-    "serve": "npm run build && http-server ./dist -g"
+    "serve": "npm run build && cd ../peers && pipenv run python2 main.py"
   },
   "dependencies": {
     "gweld": "^1.0.0-beta.1",
@@ -26,7 +26,6 @@
     "compression-webpack-plugin": "^2.0.0",
     "css-loader": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
-    "http-server": "^0.11.1",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

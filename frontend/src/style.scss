@@ -44,12 +44,39 @@ main {
 }
 
 nav {
+  font-size: 0.85em;
+  height: 2em;
   width: 100%;
-  padding: 10px 0;
+
   background-color: #035369;
 
   a {
+    display: inline-block;
+    padding: 0 1vw;
+    line-height: 2em;
+
     color: #fff;
+    text-decoration: none;
+
+    &.active {
+      text-decoration: underline;
+    }
+
+    &:hover {
+      background-color: #04627c;
+      text-decoration: underline;
+    }
+  }
+
+  #dropdown {
+    float: right;
+    height: 100%;
+    min-width: 8vw;
+
+    background-color: #04627c;
+    color: #fff;
+    border: 0;
+    outline: 0;
   }
 }
 
@@ -81,11 +108,22 @@ table {
     }
   }
 
+  th,
   td {
     padding: 0 0.8em;
 
     &.empty {
       font-style: italic;
     }
+  }
+}
+
+button {
+  &.icon {
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
   }
 }

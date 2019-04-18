@@ -30,6 +30,7 @@ export default class Peers extends Component<{}, IState> {
           <tr class="header">
             <th>Peer #</th>
             <th>Peer ID</th>
+            <th>Actions</th>
           </tr>
           {this.state.peers.map((peer, index, arr) => (
             <tr>
@@ -37,12 +38,25 @@ export default class Peers extends Component<{}, IState> {
                 {index + 1}/{arr.length}
               </td>
               <td>{peer}</td>
+              <td>
+                <button
+                  title="Request attestation"
+                  value={peer}
+                  class="icon"
+                  onClick={e =>
+                    this.requestAttestation((e as any).target.value)
+                  }
+                >
+                  &#9889;
+                </button>
+              </td>
             </tr>
           ))}
           {this.state.peers.length === 0 && (
             <tr>
               <td class="empty">-</td>
               <td class="empty">No entries</td>
+              <td class="empty">-</td>
             </tr>
           )}
         </table>
@@ -84,6 +98,23 @@ export default class Peers extends Component<{}, IState> {
     const json = await req.json();
 
     this.setState({ peers: json });
+  }
+
+  /**
+   * Request attestation from a peer.
+   * @param peer The peer ID to request from.
+   */
+  private async requestAttestation(peer: string): Promise<void> {
+    let name = prompt('What is the name of the attribute?');
+
+    peer = encodeURIComponent(peer);
+    name = encodeURIComponent(name || 'default');
+    const params = `type=request&mid=${peer}&attribute_name=${name}`;
+
+    const ctr = await Injector.get<PeerController>('PeerController');
+    await fetch(`${ctr.currentPeer}/attestation?${params}`, {
+      method: 'POST',
+    });
   }
 }
 

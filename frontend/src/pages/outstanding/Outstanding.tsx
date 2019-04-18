@@ -31,6 +31,7 @@ export default class Outstanding extends Component<{}, IState> {
             <th>#</th>
             <th>Attribute Name</th>
             <th>Requested By</th>
+            <th>Actions</th>
           </tr>
           {this.state.outstanding.map((outstanding, index, arr) => (
             <tr>
@@ -39,6 +40,16 @@ export default class Outstanding extends Component<{}, IState> {
               </td>
               <td>{outstanding[1]}</td>
               <td>{outstanding[0]}</td>
+              <td>
+                <button
+                  title="Attest to this request"
+                  value={JSON.stringify(outstanding)}
+                  class="icon"
+                  onClick={e => this.attest((e as any).target.value)}
+                >
+                  &#9889;
+                </button>
+              </td>
             </tr>
           ))}
           {this.state.outstanding.length === 0 && (
@@ -88,6 +99,25 @@ export default class Outstanding extends Component<{}, IState> {
     const json = await req.json();
 
     this.setState({ outstanding: json });
+  }
+
+  /**
+   * Attest to a request.
+   * @param request The request to sign.
+   */
+  private async attest(request: string): Promise<void> {
+    request = JSON.parse(request);
+    let value = prompt('What is the value of this attribute?');
+
+    value = encodeURIComponent(btoa(value || 'default'));
+    const peer = encodeURIComponent(request[0]);
+    const name = encodeURIComponent(request[1]);
+    const params = `mid=${peer}&attribute_name=${name}&attribute_value=${value}`;
+
+    const ctr = await Injector.get<PeerController>('PeerController');
+    await fetch(`${ctr.currentPeer}/attestation?type=attest&${params}`, {
+      method: 'POST',
+    });
   }
 }
 
