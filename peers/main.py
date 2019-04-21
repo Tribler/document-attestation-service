@@ -7,11 +7,8 @@ from __future__ import generators
 from __future__ import nested_scopes
 
 
-
-
-
 import peers
 import webserver
 
-webserver.startServer()
+serv = webserver.startServer()
 peers.startPeers()

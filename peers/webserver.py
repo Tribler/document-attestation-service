@@ -28,6 +28,7 @@ def startServer():
     # change to the serving directory
     os.chdir(Config.FOLDER)
 
+    SocketServer.TCPServer.allow_reuse_address = True
     httpserver = SocketServer.TCPServer(
         (Config.URL, Config.SERVERPORT), 
         HTTPreqhandler
@@ -43,3 +44,5 @@ def startServer():
     @atexit.register
     def onexit():
         server_process.terminate()
+    
+    return server_process

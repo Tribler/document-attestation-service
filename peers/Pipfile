@@ -12,3 +12,6 @@ twisted = "*"
 
 [requires]
 python_version = "2.7"
+
+[scripts]
+serve = "python main.py"

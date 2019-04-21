@@ -14,7 +14,7 @@ class Config:
     PATH = os.path.dirname(os.path.abspath(__file__))
     SERVERPORT = 8000
     URL = 'localhost'
-    NUMPEERS = 20
+    NUMPEERS = 2
     PEERSSTARTPORT = 14410
 
     FOLDER = os.path.join(PATH,"..","frontend","dist")

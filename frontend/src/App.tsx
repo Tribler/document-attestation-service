@@ -37,6 +37,7 @@ export default class App extends Component<{}, {}> {
             <Link activeClassName="active" href="/outstanding">
               Outstanding
             </Link>
+
             <Dropdown />
           </nav>
         </header>
@@ -56,6 +57,7 @@ export default class App extends Component<{}, {}> {
             loading={() => <Loading />}
             getComponent={() => this.fetchPage('Outstanding')}
           />
+
           <NotFound default />
         </Router>
       </main>

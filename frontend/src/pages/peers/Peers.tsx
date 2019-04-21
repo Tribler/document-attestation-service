@@ -30,7 +30,8 @@ export default class Peers extends Component<{}, IState> {
           <tr class="header">
             <th>Peer #</th>
             <th>Peer ID</th>
-            <th>Actions</th>
+            <th>Attestation</th>
+            <th>File Transfer</th>
           </tr>
           {this.state.peers.map((peer, index, arr) => (
             <tr>
@@ -50,6 +51,12 @@ export default class Peers extends Component<{}, IState> {
                   &#9889;
                 </button>
               </td>
+              <td>
+                <label for="file" class="fileinputlabel">Share file</label>
+                {
+                  <input type="file" class="fileinput" id="file" for={peer} onChange={(e) => this.uploadFile((e as any).target.files[0], (e as any).target.htmlFor)} />
+                }
+              </td>
             </tr>
           ))}
           {this.state.peers.length === 0 && (
@@ -57,8 +64,11 @@ export default class Peers extends Component<{}, IState> {
               <td class="empty">-</td>
               <td class="empty">No entries</td>
               <td class="empty">-</td>
+              <td class="empty">-</td>
             </tr>
           )}
+
+
         </table>
       </section>
     );
@@ -70,7 +80,7 @@ export default class Peers extends Component<{}, IState> {
    * Called by Preact.
    */
   public componentWillMount() {
-    this.timerId = setInterval(() => this.fetchPeers(), 500);
+    this.timerId = setInterval(() => this.fetchPeers(), 1000);
 
     this.setState({
       peers: [],
@@ -98,6 +108,25 @@ export default class Peers extends Component<{}, IState> {
     const json = await req.json();
 
     this.setState({ peers: json });
+  }
+
+  /**
+   * Upload a file to the peers server.
+   */
+  public async uploadFile(file, peer): Promise<void> {
+    let formdata = new FormData();
+    formdata.append("file", file)
+    let peercontroller = await Injector.get<PeerController>('PeerController');
+    let params = `mid=${encodeURIComponent(peer)}`
+    let result = await fetch(
+      `${peercontroller.currentPeer}/data?${params}`,
+      {
+        method: "POST",
+        body: formdata,
+      }
+    )
+    console.log(result)
+    alert(`file upload status: ${result.statusText}`)
   }
 
   /**
