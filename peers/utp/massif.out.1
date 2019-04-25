@@ -1,0 +1,66 @@
+desc: --massif-out-file=massif.out.1
+cmd: bin/utpwrapper-0.0.1-x86_64 test.hel test.helc
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=3669671
+mem_heap_B=72704
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=3672177
+mem_heap_B=73728
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=3676479
+mem_heap_B=73728
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=peak
+n2: 73728 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x4C4F469: _GLOBAL__sub_I_eh_alloc.cc (eh_alloc.cc:123)
+  n1: 72704 0x4010548: call_init.part.0 (in /usr/lib/ld-2.28.so)
+   n1: 72704 0x4010648: _dl_init (in /usr/lib/ld-2.28.so)
+    n1: 72704 0x4002038: ??? (in /usr/lib/ld-2.28.so)
+     n1: 72704 0x1: ???
+      n1: 72704 0x1FFF000365: ???
+       n1: 72704 0x1FFF000381: ???
+        n0: 72704 0x1FFF00038A: ???
+ n1: 1024 0x4A6F78F: _IO_file_doallocate (in /usr/lib/libc-2.28.so)
+  n1: 1024 0x4A7DBBE: _IO_doallocbuf (in /usr/lib/libc-2.28.so)
+   n1: 1024 0x4A7CE46: _IO_file_overflow@@GLIBC_2.2.5 (in /usr/lib/libc-2.28.so)
+    n1: 1024 0x4A7BF35: _IO_file_xsputn@@GLIBC_2.2.5 (in /usr/lib/libc-2.28.so)
+     n1: 1024 0x4A71B11: puts (in /usr/lib/libc-2.28.so)
+      n0: 1024 0x10904E: main (in /home/jonathan/Documents/programming/python/ipv8frontend/peers/utp/bin/utpwrapper-0.0.1-x86_64)
+#-----------
+snapshot=4
+#-----------
+time=3676479
+mem_heap_B=1024
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=3677370
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
